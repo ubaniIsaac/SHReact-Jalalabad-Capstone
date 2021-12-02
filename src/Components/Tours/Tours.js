@@ -69,7 +69,7 @@ const Tours = () => {
         <div className="title ">
           {toursData.length === 0 ?
             <div>
-              <h1>No more Tours Remaining</h1>
+              <h2>No more Tours Remaining</h2>
               <button className="refresh-btn"
                 onClick={() => getInfo()}>Refresh</button>
             </div>
