@@ -22,24 +22,30 @@ const Tours = () => {
   // )
   // .catch((err) => console.log(err)
 
+
+
   const getInfo = async () => {
     await axios
       .get('https://course-api.com/react-tours-project')
-      .then((res) => {
-        console.log(res.data);
+      .then(res => {
+        // console.log(res.data);
         setToursData(res.data);
         setIsLoading(false);
-      })
+      }
+      )
       .catch((err) => {
         setIsError(true);
         console.error(err);
       });
+
   };
+
 
   const removeTour = (id) => {
     const prevTours = toursData;
     const newTours = prevTours.filter((tour) => tour.id !== id);
     setToursData(newTours);
+
   };
 
   const listTours = toursData.map((tour) => (
@@ -60,12 +66,21 @@ const Tours = () => {
         <h1 className="loading">Loading...</h1>
       ) : (
         <div className="title ">
-          <h1>Our Tours</h1>
-          <div className="underline"></div>
+          {toursData.length === 0 ?
+            <div>
+              <h1>No more Tours Remaining</h1>
+              <button className="refresh-btn"
+                onClick={() => window.location.reload(false)}>Refresh</button>
+            </div>
+            : <div><h1>Our Tours</h1>
+              <div className="underline"></div></div>}
+
         </div>
-      )}
+      )
+      }
       <main>{listTours}</main>
-    </section>
+
+    </section >
   );
 };
 export default Tours;
