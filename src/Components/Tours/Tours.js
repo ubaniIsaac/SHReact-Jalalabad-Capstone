@@ -9,6 +9,7 @@ const Tours = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
+
   useEffect(() => {
     getInfo();
   }, []);
@@ -70,7 +71,7 @@ const Tours = () => {
             <div>
               <h1>No more Tours Remaining</h1>
               <button className="refresh-btn"
-                onClick={() => window.location.reload(false)}>Refresh</button>
+                onClick={() => getInfo()}>Refresh</button>
             </div>
             : <div><h1>Our Tours</h1>
               <div className="underline"></div></div>}
